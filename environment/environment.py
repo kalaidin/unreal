@@ -6,7 +6,7 @@ from __future__ import print_function
 import numpy as np
 import cv2
 
-from constants import ENV_TYPE
+from constants import ENV_TYPE, PREPARE_SUBMIT, SUBMIT_OUTPUT
 
 class Environment(object):
   # cached action size
@@ -22,7 +22,10 @@ class Environment(object):
       return lab_environment.LabEnvironment()
     else:
       from . import gym_environment
-      return gym_environment.GymEnvironment()
+      if PREPARE_SUBMIT:
+        return gym_environment.MonitorEnvironment(output_dir=SUBMIT_OUTPUT)
+      else:
+        return gym_environment.GymEnvironment()
   
   @staticmethod
   def get_action_size():

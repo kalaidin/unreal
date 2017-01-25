@@ -491,3 +491,5 @@ class UnrealModel(object):
     return tf.nn.conv2d_transpose(x, W, output_shape,
                                   strides=[1, stride, stride, 1],
                                   padding='VALID')
+
+  # def get_next_action(self):

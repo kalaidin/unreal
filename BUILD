@@ -8,6 +8,13 @@ py_binary(
 )
 
 py_binary(
+    name = "make_submit",
+    srcs = ["submit.py"],
+    data = ["//:deepmind_lab.so"],
+    main = "submit.py"
+)
+
+py_binary(
     name = "display",
     srcs = ["display.py"],
     data = ["//:deepmind_lab.so"],

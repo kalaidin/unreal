@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+
+import os
+
 LOCAL_T_MAX = 20 # repeat step size
 RMSP_ALPHA = 0.99 # decay parameter for RMSProp
 RMSP_EPSILON = 0.1 # epsilon parameter for RMSProp
@@ -15,6 +18,11 @@ ENV_NAME = 'stairway_to_melon'
 
 #ENV_TYPE = 'gym'
 #ENV_NAME = 'Breakout-v0'
+
+PREPARE_SUBMIT = False  # should submit or not
+SUBMIT_DIR = "/tmp/gym_submits/"
+SUBMIT_VERSION = "sub1"
+SUBMIT_OUTPUT = os.path.join(SUBMIT_DIR, "{}_{}".format(ENV_NAME, SUBMIT_VERSION))
 
 INITIAL_ALPHA_LOG_RATE = 0.5 # log_uniform interpolate rate for learning rate
 GAMMA = 0.99 # discount factor for rewards

@@ -6,6 +6,7 @@ from __future__ import print_function
 import numpy as np
 import cv2
 import gym
+from gym import wrappers
 
 from constants import ENV_NAME
 from environment import environment
@@ -69,3 +70,15 @@ class GymEnvironment(environment.Environment):
     self.last_action = action
     self.last_reward = reward
     return state, reward, terminal, pixel_change
+
+
+class MonitorEnvironment(GymEnvironment):
+  """ Environment, that is used to create submission to openai gym """
+  def __init__(self, output_dir, num_episodes=100,
+               display=False, frame_skip=4, no_op_max=30):
+    """ todo """
+    super(MonitorEnvironment, self).__init__(display, frame_skip, no_op_max)
+    self.env = wrappers.Monitor(self.env, output_dir)
+    self.num_episodes = num_episodes
+
+
