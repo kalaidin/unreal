@@ -389,12 +389,11 @@ class SubmitTrainer(Trainer):
     super(SubmitTrainer, self).__init__(thread_index, global_network,
                                         initial_learning_rate, learning_rate_input,
                                         grad_applier, max_global_time_step, device)
-    from gym import wrappers
-    assert isinstance(self.environment, wrappers.Monitor)
 
   def process(self, sess, global_t, summary_writer, summary_op, score_input):
     """ TODO """
-    for ep in self.environment.num_episodes:
+    self.environment.reset()
+    for ep in range(self.environment.num_episodes):
       print("starting episode number {}!".format(ep))
 
       terminal = False
@@ -416,11 +415,12 @@ class SubmitTrainer(Trainer):
 
         # Process game
         new_state, reward, terminal, pixel_change = self.environment.process(action)
-
-        assert hash(_last_state) != hash(new_state)
+        self.episode_reward += reward
 
         if terminal:
           print("score={}".format(self.episode_reward))
+          self.episode_reward = 0
           self.environment.reset()
           self.local_network.reset_state()
           break
+    self.environment.env.close()

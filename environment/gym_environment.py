@@ -78,7 +78,7 @@ class MonitorEnvironment(GymEnvironment):
                display=False, frame_skip=4, no_op_max=30):
     """ todo """
     super(MonitorEnvironment, self).__init__(display, frame_skip, no_op_max)
-    self.env = wrappers.Monitor(self.env, output_dir)
+    self.env = wrappers.Monitor(self.env, output_dir, mode='training')
     self.num_episodes = num_episodes
 
 
