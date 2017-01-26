@@ -7,6 +7,7 @@ import numpy as np
 import cv2
 import gym
 from gym import wrappers
+import random
 
 from constants import ENV_NAME
 from environment import environment
@@ -52,7 +53,8 @@ class GymEnvironment(environment.Environment):
   
   def _process_frame(self, action):
     reward = 0
-    for i in range(self._frame_skip):
+    num_skip = random.choice(range(2, self._frame_skip+1))
+    for i in range(num_skip):
       observation, r, terminal, _ = self.env.step(action)
       reward += r
       if terminal:
@@ -75,7 +77,7 @@ class GymEnvironment(environment.Environment):
 class MonitorEnvironment(GymEnvironment):
   """ Environment, that is used to create submission to openai gym """
   def __init__(self, output_dir, num_episodes=100,
-               display=False, frame_skip=4, no_op_max=30):
+               display=False, frame_skip=1, no_op_max=30):
     """ todo """
     super(MonitorEnvironment, self).__init__(display, frame_skip, no_op_max)
     self.env = wrappers.Monitor(self.env, output_dir, mode='training')
