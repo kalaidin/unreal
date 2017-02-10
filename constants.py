@@ -9,7 +9,7 @@ CHECKPOINT_DIR = '/data/deephack/tmp/unreal_checkpoints'
 LOG_FILE = '/data/deephack/tmp/unreal_log/unreal_log'
 INITIAL_ALPHA_LOW = 1e-4    # log_uniform low limit for learning rate
 INITIAL_ALPHA_HIGH = 5e-3   # log_uniform high limit for learning rate
-PARALLEL_SIZE = 8 # parallel thread size
+PARALLEL_SIZE = 24 # parallel thread size
 
 # ENV_TYPE = 'lab' # 'lab' or 'gym' or 'maze'
 #ENV_NAME = 'seekavoid_arena_01'
