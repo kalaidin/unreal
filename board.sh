@@ -1,4 +1,4 @@
 #!/bin/sh
 
-tensorboard --logdir /tmp/unreal_log
+tensorboard --logdir /data/deephack/tmp/unreal_log --port 8088
 

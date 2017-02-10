@@ -5,8 +5,8 @@ import os
 LOCAL_T_MAX = 2 # repeat step size
 RMSP_ALPHA = 0.99 # decay parameter for RMSProp
 RMSP_EPSILON = 0.1 # epsilon parameter for RMSProp
-CHECKPOINT_DIR = '/tmp/unreal_checkpoints'
-LOG_FILE = '/tmp/unreal_log/unreal_log'
+CHECKPOINT_DIR = '/data/deephack/tmp/unreal_checkpoints'
+LOG_FILE = '/data/deephack/tmp/unreal_log/unreal_log'
 INITIAL_ALPHA_LOW = 1e-4    # log_uniform low limit for learning rate
 INITIAL_ALPHA_HIGH = 5e-3   # log_uniform high limit for learning rate
 PARALLEL_SIZE = 8 # parallel thread size
@@ -17,10 +17,10 @@ PARALLEL_SIZE = 8 # parallel thread size
 #ENV_NAME = 'nav_maze_static_01'
 
 ENV_TYPE = 'gym'
-ENV_NAME = 'Skiing-v0'
+ENV_NAME = 'MsPacman-v0'
 
 PREPARE_SUBMIT = False  # should submit or not
-SUBMIT_DIR = "/tmp/gym_submits/"
+SUBMIT_DIR = "/data/deephack/tmp/gym_submits/"
 SUBMIT_VERSION = "sub1"
 SUBMIT_OUTPUT = os.path.join(SUBMIT_DIR, "{}_{}".format(ENV_NAME, SUBMIT_VERSION))
 
