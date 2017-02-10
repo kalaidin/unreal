@@ -26,8 +26,8 @@ SUBMIT_OUTPUT = os.path.join(SUBMIT_DIR, "{}_{}".format(ENV_NAME, SUBMIT_VERSION
 
 INITIAL_ALPHA_LOG_RATE = 0.5 # log_uniform interpolate rate for learning rate
 GAMMA = 0.99 # discount factor for rewards
-ENTROPY_BETA = 0.001 # entropy regurarlization constant
-PIXEL_CHANGE_LAMBDA = 0.1 # 0.01 ~ 0.1 for Lab, 0.0001 ~ 0.01 for Gym
+ENTROPY_BETA = 0.01 # entropy regurarlization constant
+PIXEL_CHANGE_LAMBDA = 0.01 # 0.01 ~ 0.1 for Lab, 0.0001 ~ 0.01 for Gym
 EXPERIENCE_HISTORY_SIZE = 10000 # Experience replay buffer size
 
 USE_PIXEL_CHANGE      = True
