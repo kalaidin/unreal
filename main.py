@@ -52,7 +52,15 @@ grad_applier = RMSPropApplier(learning_rate = learning_rate_input,
                               clip_norm = GRAD_NORM_CLIP,
                               device = device)
 
+gpu_c = 1
+cpu_c = 1
 for i in range(PARALLEL_SIZE):
+  if USE_GPU and gpu_c < NUM_GPU:
+    device = "/gpu:{}".format(gpu_c)
+    gpu_c += 1
+  else:
+    device = "/cpu:0".format(cpu_c)
+    cpu_c += 1
   trainer = Trainer(i,
                     global_network,
                     initial_learning_rate,
